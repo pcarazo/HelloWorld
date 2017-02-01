@@ -1,0 +1,12 @@
+languaga: c
+sudo: required
+env:
+    - MPI_IMPL=openmpi
+
+before_install:
+    - test -n $CC && unset CC
+    - sudo apt-get -y install gcc libcr-dev mpich2 mpich2-doc
+
+script:
+    - mpicc cpi.c -o /tmp/cpi
+    - /tmp/cpi
